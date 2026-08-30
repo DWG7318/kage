@@ -1,5 +1,7 @@
 # Kage
 
+> **Research fork:** this fork preserves the upstream project and adds a Chinese implementation study, architecture map, and clean-room standard-library plan. Start at [RESEARCH.md](RESEARCH.md). The upstream Kage code and artwork are **not licensed for reuse or redistribution**; the research material does not change that status.
+
 An interactive five-chapter night walk through a Kyoto mountain temple, rendered live in Three.js and layered with cinematic generated imagery.
 
 [**View the live project**](https://mengto.github.io/kage/) · [**View the source**](https://github.com/MengTo/kage) · [**Read the build prompt**](PROMPT.md)
