@@ -234,7 +234,7 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
 }
 .peek-fr{ display:block; aspect-ratio:16/10;
   background:linear-gradient(180deg, rgba(3,6,9,.04) 24%, rgba(3,6,9,.48) 100%),
-    url('secret-pathways-assets/generated/kage-sanmon-preview.webp') center / cover no-repeat;
+    url('secret-pathways-assets/generated/zenith-arrival-v2.webp') center / cover no-repeat;
   outline:1px solid rgba(223,231,224,.16); outline-offset:-1px;
   box-shadow:0 34px 70px -30px rgba(0,0,0,.9); transition:outline-color .5s; }
 .peek:hover{ transform:translate3d(0,-5px,0); }
@@ -329,8 +329,8 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
 .arrowlink:hover .ar svg{ transform:translate3d(2px,-2px,0); }
 .arrowlink:hover .ar svg path{ stroke:#05070a; }
 .gate-stats{ display:flex; gap:clamp(24px,4vw,62px); margin-top:clamp(46px,8vh,96px); border-top:1px solid var(--line-soft); padding-top:24px; }
-.gate-stats div b{ display:block; font-size:clamp(22px,2.1vw,32px); font-weight:300; letter-spacing:-.02em; }
-.gate-stats div span{ font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+.gate-stats div b{ display:block; font-size:clamp(22px,2.1vw,32px); font-weight:300; letter-spacing:-.02em; color:rgba(223,231,224,.94); }
+.gate-stats div span{ font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:rgba(223,231,224,.58); }
 
 /* — chapter II: pathways cards */
 .path-intro{
@@ -339,6 +339,14 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
 }
 .path-intro h2{ max-width:13ch; }
 .path-intro p{ max-width:24ch; justify-self:end; }
+.path-summary{
+  display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.82fr);
+  gap:clamp(30px,7vw,120px); align-items:start;
+  margin-top:clamp(74px,12vh,150px); padding-top:clamp(28px,4vh,48px);
+  border-top:1px solid var(--line-soft);
+}
+.path-summary h2{ max-width:16ch; }
+.path-summary-copy{ display:grid; gap:18px; max-width:52ch; }
 .cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(10px,1.4vw,22px); align-items:start; }
 .card{ position:relative; cursor:pointer; }
 .card:nth-child(1){ transform:translateY(0); }
@@ -356,17 +364,17 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
 .card:nth-child(1) .card-fr{
   background:
     linear-gradient(180deg,rgba(3,6,9,.04) 36%,rgba(3,6,9,.72) 100%),
-    url('secret-pathways-assets/generated/kage-approach.webp') center / cover no-repeat;
+    url('secret-pathways-assets/generated/zenith-nurse-assessment-v2.webp') center 42% / cover no-repeat;
 }
 .card:nth-child(2) .card-fr{
   background:
     linear-gradient(180deg,rgba(3,6,9,.06) 36%,rgba(3,6,9,.74) 100%),
-    url('secret-pathways-assets/generated/kage-lantern-court.webp') center / cover no-repeat;
+    url('secret-pathways-assets/generated/zenith-arrival-v2.webp') center / cover no-repeat;
 }
 .card:nth-child(3) .card-fr{
   background:
     linear-gradient(180deg,rgba(3,6,9,.05) 36%,rgba(3,6,9,.74) 100%),
-    url('secret-pathways-assets/generated/kage-moonwater.webp') center / cover no-repeat;
+    url('secret-pathways-assets/generated/zenith-family-followup-v2.webp') center / cover no-repeat;
 }
 .card-fr::after{ content:''; position:absolute; inset:0;
   background:linear-gradient(transparent 46%, rgba(4,6,9,.80)); pointer-events:none; }
@@ -515,9 +523,9 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
   border-top:1px solid var(--line-soft); }
 .foot-grid,.foot-base{ position:relative; }
 .foot-grid{ display:grid; grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,.6fr)); gap:clamp(22px,4vw,60px); }
-.foot h4{ margin:0 0 16px; font-size:10px; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
+.foot h4{ margin:0 0 16px; font-size:10px; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:rgba(223,231,224,.58); }
 .foot ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px; }
-.foot li a{ font-size:13px; color:#8f9a93; transition:color .35s; }
+.foot li a{ font-size:13px; color:#aeb8b1; transition:color .35s; }
 .foot li a:hover{ color:var(--bone); }
 .foot-brand p{ margin:16px 0 0; max-width:34ch; font-size:13px; color:#79847e; }
 .foot-base{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;
@@ -679,6 +687,7 @@ body[data-layout-curriculum="b"] .les{
 }
 body[data-layout-curriculum="b"] .les:nth-child(-n+2){ grid-column:span 3; }
 body[data-layout-curriculum="b"] .les:nth-child(n+3){ grid-column:span 2; }
+body[data-layout-curriculum="b"] .les:nth-last-child(-n+2){ grid-column:span 3; }
 body[data-layout-curriculum="b"] .les::before{ left:0; background:linear-gradient(145deg,rgba(32,165,124,.13),transparent 58%); }
 body[data-layout-curriculum="b"] .les:hover{ padding-left:32px; }
 body[data-layout-curriculum="b"] .les h3{ font-size:clamp(20px,2vw,30px); }
@@ -901,8 +910,8 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
   body[data-layout-story="b"] .gate-grid h2{ max-width:16ch; }
   .path-intro{ grid-template-columns:1fr; gap:18px; }
   .path-intro p{ justify-self:start; }
+  .path-summary{ grid-template-columns:1fr; gap:22px; }
   body[data-layout-curriculum="b"] .les:nth-child(n){ grid-column:span 3; }
-  body[data-layout-curriculum="b"] .les:last-child{ grid-column:span 6; }
 }
 @media (max-width:820px){
   /* the split collapses and the copy takes the page back */
@@ -979,10 +988,10 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
       data-layout-curriculum="b" data-layout-closing="b" data-layout-footer="b">
 
 <div class="scene-plates" aria-hidden="true">
-  <div class="scene-plate" style="--plate:url('secret-pathways-assets/generated/kage-sanmon-preview.webp')"></div>
-  <div class="scene-plate" style="--plate:url('secret-pathways-assets/generated/kage-approach.webp')"></div>
-  <div class="scene-plate" style="--plate:url('secret-pathways-assets/generated/kage-lantern-court.webp')"></div>
-  <div class="scene-plate" style="--plate:url('secret-pathways-assets/generated/kage-moonwater.webp')"></div>
+  <div class="scene-plate" style="--plate:url('secret-pathways-assets/generated/zenith-space-v2.webp')"></div>
+  <div class="scene-plate" style="--plate:url('secret-pathways-assets/generated/zenith-arrival-v2.webp')"></div>
+  <div class="scene-plate" style="--plate:url('secret-pathways-assets/generated/zenith-diagnostics-v2.webp')"></div>
+  <div class="scene-plate" style="--plate:url('secret-pathways-assets/generated/zenith-family-courtyard-v2.webp')"></div>
 </div>
 <canvas id="gl" aria-hidden="true"></canvas>
 <div id="vignette"></div>
@@ -1082,27 +1091,27 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
     <span class="k"><b>01</b> — 臻晨</span><span class="rule"></span><span class="k jp material-hidden"></span>
   </div>
   <div class="gate-grid">
-    <h2 class="display h-sec" data-rv="up">报告有人讲，后续有人跟</h2>
+    <h2 class="display h-sec" data-rv="up">先把一家人的情况看清</h2>
     <figure class="story-still gate-visual" data-rv="up">
       <div class="still-frame">
-        <img src="secret-pathways-assets/generated/kage-approach.webp" alt="臻晨护士正在与一家人沟通健康服务" width="1536" height="1024" loading="lazy" decoding="async">
+        <img src="secret-pathways-assets/generated/zenith-diagnostics-v2.webp" alt="医生与检查人员正在完成一项健康检查" width="1536" height="1024" loading="lazy" decoding="async">
       </div>
-      <figcaption><span>从第一次沟通开始</span><b>01 / 04</b></figcaption>
+      <figcaption><span>先评估，再安排检查</span><b>01 / 06</b></figcaption>
     </figure>
     <div class="gate-copy">
-      <p class="lead" data-rv="up">从看报告，到安排下一步，都有人接着。</p>
-      <p class="body" data-rv="up">该解释的讲清楚，该落实的安排好。</p>
+      <p class="lead" data-rv="up">每个人来时，带着的问题都不一样。先把既往情况、生活习惯和这次最关心的事放在一起，检查才有方向。</p>
+      <p class="body" data-rv="up">护士陪着走流程；需要判断的地方，由医生当面讲。</p>
       <a class="arrowlink" href="#pathways" data-rv="fade" data-cursor>
-        <span>看看怎么服务</span>
+        <span>看看服务怎么接着走</span>
         <span class="ar"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3"/></svg></span>
       </a>
     </div>
   </div>
-  <div class="gate-stats material-hidden" data-rv="up">
-    <div><b>05</b><span>Chapters</span></div>
-    <div><b>92</b><span>Minutes</span></div>
-    <div><b>1611</b><span>Hall raised</span></div>
-    <div><b>∞</b><span>Stillness</span></div>
+  <div class="gate-stats" data-rv="up">
+    <div><b>01</b><span>预约沟通</span></div>
+    <div><b>02</b><span>到店评估</span></div>
+    <div><b>03</b><span>医生说明</span></div>
+    <div><b>04</b><span>后续跟进</span></div>
   </div>
 </section>
 
@@ -1127,25 +1136,25 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
     <span class="k"><b>02</b> — 服务</span><span class="rule"></span><span class="k jp material-hidden"></span>
   </div>
   <div class="path-intro">
-    <h2 class="display h-sec" data-rv="up">先看清，再说清，再安排。</h2>
-    <p class="body-lg" data-rv="up">每一步，都有人接着。</p>
+    <h2 class="display h-sec" data-rv="up">一次检查，接着一整套服务。</h2>
+    <p class="body-lg" data-rv="up">该做什么、怎么看结果、后面怎么安排，都有人接着。</p>
   </div>
   <div class="cards" id="cards">
     <article class="card" data-rv="up" data-view="0" data-cursor>
       <div class="card-fr" data-frame>
                 <span class="card-ar"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3"/></svg></span>
         <i class="glow material-hidden" style="--gx:80.2%; --gy:23.9%; --gr:22%; --gt:6.1s; --gt2:9.7s; --gc1:rgba(255,142,108,.50); --gc2:rgba(212,56,38,.24)"></i>
-        <div class="card-lab"><b>把情况看清</b><span class="jp material-hidden"></span></div>
+        <div class="card-lab"><b>先评估，再检查</b><span class="jp material-hidden"></span></div>
       </div>
-      <div class="card-meta material-hidden"><span></span><span></span></div>
+      <div class="card-meta"><span>既往情况与生活习惯</span><span>01</span></div>
     </article>
     <article class="card" data-rv="up" data-view="1" data-cursor>
       <div class="card-fr" data-frame>
                 <span class="card-ar"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3"/></svg></span>
         <i class="glow glow--flame material-hidden" style="--gx:70.5%; --gy:47.2%; --gr:14%; --gt:3.7s; --gt2:5.3s; --gc1:rgba(255,198,124,.62); --gc2:rgba(226,118,40,.30)"></i>
-        <div class="card-lab"><b>把话说明白</b><span class="jp material-hidden"></span></div>
+        <div class="card-lab"><b>到店有人陪着</b><span class="jp material-hidden"></span></div>
       </div>
-      <div class="card-meta material-hidden"><span></span><span></span></div>
+      <div class="card-meta"><span>预约、接待与流程安排</span><span>02</span></div>
     </article>
     <article class="card" data-rv="up" data-view="2" data-cursor>
       <div class="card-fr" data-frame>
@@ -1153,8 +1162,15 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
         <i class="glow material-hidden" style="--gx:48.0%; --gy:16.8%; --gr:20%; --gt:7.3s; --gt2:11.2s; --gc1:rgba(255,138,104,.52); --gc2:rgba(208,54,36,.24)"></i>
         <div class="card-lab"><b>把后续接上</b><span class="jp material-hidden"></span></div>
       </div>
-      <div class="card-meta material-hidden"><span></span><span></span></div>
+      <div class="card-meta"><span>复评、就医与日常管理</span><span>03</span></div>
     </article>
+  </div>
+  <div class="path-summary" data-rv="up">
+    <h2 class="display h-sec">照顾的是一家人，也是一段很长的时间。</h2>
+    <div class="path-summary-copy">
+      <p class="body-lg">孩子在长大，父母的身体在变化，长辈也有自己的节奏。每个人关心的事不同，安排自然不能只用一张固定清单。</p>
+      <p class="body">臻晨把资料、检查、医生建议和后续记录放在一起。下次再来，不用从头说起。</p>
+    </div>
   </div>
 </section>
 
@@ -1176,52 +1192,82 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
     <span class="k"><b>03</b> — 相伴</span><span class="rule"></span><span class="k jp material-hidden"></span>
   </div>
   <div class="cur-head">
-    <h2 class="display h-sec" data-rv="up">每一项，都有人负责。</h2>
-    <p class="body-lg" data-rv="up">医生把关，服务团队接着办。</p>
+    <h2 class="display h-sec" data-rv="up">不同的问题，找对人来看。</h2>
+    <p class="body-lg" data-rv="up">需要进一步关注时，再进入对应的专项评估。</p>
   </div>
   <div class="chapter-stills">
     <figure class="story-still" data-rv="up">
       <div class="still-frame">
-        <img src="secret-pathways-assets/generated/kage-lantern-court.webp" alt="医生正在为一家人讲解健康情况" width="1024" height="1536" loading="lazy" decoding="async">
+        <img src="secret-pathways-assets/generated/zenith-doctor-review-v2.webp" alt="男医生正在向一对老年夫妻说明健康报告" width="1024" height="1536" loading="lazy" decoding="async">
       </div>
-      <figcaption><span>专业判断</span><b>02 / 04</b></figcaption>
+      <figcaption><span>报告当面讲</span><b>04 / 06</b></figcaption>
     </figure>
     <figure class="story-still" data-rv="up">
       <div class="still-frame">
-        <img src="secret-pathways-assets/generated/kage-moonwater.webp" alt="护士陪同一家人前往下一项服务" width="1536" height="1024" loading="lazy" decoding="async">
+        <img src="secret-pathways-assets/generated/zenith-family-courtyard-v2.webp" alt="一家人在健康中心庭院中一起散步" width="1536" height="1024" loading="lazy" decoding="async">
       </div>
-      <figcaption><span>继续跟进</span><b>03 / 04</b></figcaption>
+      <figcaption><span>照顾一家人的不同阶段</span><b>05 / 06</b></figcaption>
     </figure>
   </div>
   <div class="cur" id="cur">
     <div class="les" data-les="0" data-cursor>
-      <span class="k material-hidden">01</span>
-      <h3>专业判断<em class="jp material-hidden"></em></h3>
-      <p>医疗判断，交给专业的人。</p>
+      <span class="k">01</span>
+      <h3>代谢健康<em class="jp material-hidden"></em></h3>
+      <p>关注血糖、血脂、体重和生活方式。</p>
       <span class="t material-hidden"></span><i class="bar"></i>
     </div>
     <div class="les" data-les="1" data-cursor>
-      <span class="k material-hidden">02</span>
-      <h3>报告说明<em class="jp material-hidden"></em></h3>
-      <p>看不懂的地方，当面讲清。</p>
+      <span class="k">02</span>
+      <h3>心脑血管<em class="jp material-hidden"></em></h3>
+      <p>结合检查结果，看看需要长期留意什么。</p>
       <span class="t material-hidden"></span><i class="bar"></i>
     </div>
     <div class="les" data-les="2" data-cursor>
-      <span class="k material-hidden">03</span>
-      <h3>服务安排<em class="jp material-hidden"></em></h3>
-      <p>接下来做什么，安排明白。</p>
+      <span class="k">03</span>
+      <h3>免疫与肿瘤<em class="jp material-hidden"></em></h3>
+      <p>把家族史、既往检查和当下情况放在一起看。</p>
       <span class="t material-hidden"></span><i class="bar"></i>
     </div>
     <div class="les" data-les="3" data-cursor>
-      <span class="k material-hidden">04</span>
-      <h3>留下记录<em class="jp material-hidden"></em></h3>
-      <p>做过什么，随时能查。</p>
+      <span class="k">04</span>
+      <h3>脑健康<em class="jp material-hidden"></em></h3>
+      <p>关注记忆、睡眠和脑血管相关问题。</p>
       <span class="t material-hidden"></span><i class="bar"></i>
     </div>
     <div class="les" data-les="4" data-cursor>
-      <span class="k material-hidden">05</span>
-      <h3>继续跟进<em class="jp material-hidden"></em></h3>
-      <p>这次做完，后面还有人跟。</p>
+      <span class="k">05</span>
+      <h3>肺健康<em class="jp material-hidden"></em></h3>
+      <p>围绕呼吸状况、肺功能和影像结果评估。</p>
+      <span class="t material-hidden"></span><i class="bar"></i>
+    </div>
+    <div class="les" data-les="5" data-cursor>
+      <span class="k">06</span>
+      <h3>消化健康<em class="jp material-hidden"></em></h3>
+      <p>结合胃肠、肝胆和营养情况继续检查。</p>
+      <span class="t material-hidden"></span><i class="bar"></i>
+    </div>
+    <div class="les" data-les="6" data-cursor>
+      <span class="k">07</span>
+      <h3>肌骨与运动<em class="jp material-hidden"></em></h3>
+      <p>看看骨关节、肌力和日常活动能力。</p>
+      <span class="t material-hidden"></span><i class="bar"></i>
+    </div>
+    <div class="les" data-les="7" data-cursor>
+      <span class="k">08</span>
+      <h3>生殖健康<em class="jp material-hidden"></em></h3>
+      <p>关注不同年龄和人生阶段的实际需要。</p>
+      <span class="t material-hidden"></span><i class="bar"></i>
+    </div>
+    <div class="les" data-les="8" data-cursor>
+      <span class="k">09</span>
+      <h3>口腔健康<em class="jp material-hidden"></em></h3>
+      <p>从日常检查，到需要处理的问题。</p>
+      <span class="t material-hidden"></span><i class="bar"></i>
+    </div>
+    <div class="les" data-les="9" data-cursor>
+      <span class="k">10</span>
+      <h3>眼健康<em class="jp material-hidden"></em></h3>
+      <p>关注视力、眼底和长期用眼情况。</p>
       <span class="t material-hidden"></span><i class="bar"></i>
     </div>
   </div>
@@ -1246,7 +1292,7 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
   </div>
   <div class="eyebrow" data-rv="fade"><span class="dot"></span> 长期相伴</div>
   <h2 class="display" data-rv="up">往后的事，我们接着跟。</h2>
-  <p class="body-lg" data-rv="up">这次做完，下一次不必从头说起。</p>
+  <p class="body-lg" data-rv="up">一家人的健康会变，我们把每一次检查、说明和安排接起来。</p>
   <a class="cta" href="#top" data-rv="fade" data-cursor>
     <i></i><span>回到首页</span>
     <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3"/></svg>
@@ -1270,24 +1316,24 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
   <div class="foot-grid">
     <div class="foot-brand">
       <img src="assets/zhenchen-health-logo.png" alt="">
-      <p>臻晨健康<br>ZenithCare</p>
+      <p>把一次检查，接成一家人的长期健康服务。</p>
     </div>
-    <div class="material-hidden"><h4></h4><ul>
-      <li><a href="#gate" data-cursor>The Sanmon</a></li>
-      <li><a href="#pathways" data-cursor>Still Gardens</a></li>
-      <li><a href="#lessons" data-cursor>Sacred Craft</a></li>
-      <li><a href="#eternity" data-cursor>Afterlight</a></li>
+    <div><h4>服务</h4><ul>
+      <li><a href="#gate" data-cursor>预约沟通</a></li>
+      <li><a href="#gate" data-cursor>健康评估</a></li>
+      <li><a href="#pathways" data-cursor>报告说明</a></li>
+      <li><a href="#pathways" data-cursor>后续安排</a></li>
     </ul></div>
-    <div class="material-hidden"><h4></h4><ul>
-      <li><a href="#lessons" data-cursor>Borrowed scenery</a></li>
-      <li><a href="#lessons" data-cursor>Lantern light</a></li>
-      <li><a href="#lessons" data-cursor>Charred cypress</a></li>
-      <li><a href="#lessons" data-cursor>Raked gravel</a></li>
+    <div><h4>关注</h4><ul>
+      <li><a href="#lessons" data-cursor>代谢与心脑血管</a></li>
+      <li><a href="#lessons" data-cursor>肺与消化</a></li>
+      <li><a href="#lessons" data-cursor>肌骨与运动</a></li>
+      <li><a href="#lessons" data-cursor>口腔与眼健康</a></li>
     </ul></div>
-    <div class="material-hidden"><h4></h4><ul>
-      <li><a href="#top" data-cursor>Journal</a></li>
-      <li><a href="#top" data-cursor>Field notes</a></li>
-      <li><a href="#top" data-cursor>Colophon</a></li>
+    <div><h4>相伴</h4><ul>
+      <li><a href="#eternity" data-cursor>留下记录</a></li>
+      <li><a href="#eternity" data-cursor>复评安排</a></li>
+      <li><a href="#eternity" data-cursor>继续跟进</a></li>
     </ul></div>
   </div>
   <div class="foot-base">
@@ -1321,7 +1367,10 @@ const Q      = new URLSearchParams(location.search);
 const qs     = (k, d) => { const v = Q.get(k); return v === null ? d : v; };
 const qn     = (k, d) => { const v = Q.get(k); return v === null ? d : parseFloat(v); };
 const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const COARSE = matchMedia('(hover: none)').matches;
+/* Embedded desktop browsers can report `hover:none` even when a mouse is
+   active. Treat only genuinely small coarse-pointer viewports as touch-only,
+   otherwise Kage's cursor trail and parallax disappear from the desktop. */
+const COARSE = innerWidth <= 820 || matchMedia('(hover: none) and (pointer: coarse)').matches;
 
 const clamp  = (v, a, b) => v < a ? a : (v > b ? b : v);
 const sat    = v => clamp(v, 0, 1);
@@ -3427,7 +3476,7 @@ function updateLeaves(dt) {
    a continuous drift and a fast one throws the motes apart, which is how a
    moving source actually sheds them; emitting on a timer gives an evenly
    spaced string of beads at every speed. */
-const WISP_D = 3.4;
+const WISP_D = 2.8;
 const WISP = { list: [], i: 0, acc: 0, ex: 0, ey: 0, lx: 0, ly: 0, idle: 0, seen: false };
 function buildWisps() {
   if (COARSE) return;
@@ -3435,7 +3484,7 @@ function buildWisps() {
      no rotated lookup. They are also small — a few pixels of core inside a
      faint halo — which is what lets the count go up without the additive fill
      that a screenful of big sprites costs. */
-  const N = LOW ? 90 : 190;
+  const N = LOW ? 140 : 320;
   const g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(N * 3), 3));
   g.setAttribute('aA', new THREE.BufferAttribute(new Float32Array(N), 1));
@@ -3499,12 +3548,12 @@ function updateWisps(dt) {
     w.life = 0; w.max = (weak ? 2.1 : 1.45) + Math.random() * 1.3;
     w.vx = -Math.cos(a) * .09 + (Math.random() - .5) * .38;
     w.vy = -Math.sin(a) * .09 + (Math.random() - .5) * .32 + .02;
-    w.sz = (weak ? .018 : .024) + Math.random() * .026;
+    w.sz = (weak ? .028 : .036) + Math.random() * .036;
     w.ph = Math.random() * TAU;
   };
 
   WISP.acc += moved;
-  const STEP = .030;
+  const STEP = .018;
   let guard = 0;
   while (WISP.acc >= STEP && guard++ < 14) {
     WISP.acc -= STEP;
@@ -3531,7 +3580,7 @@ function updateWisps(dt) {
     /* light damping: they have to coast to carry the scatter outward, where
        the old rate stopped every mote within a tenth of a unit of its spawn */
     w.vx *= 1 - .5 * dt; w.vy = w.vy * (1 - .5 * dt) + .022 * dt;    /* it rises */
-    A[i] = smooth(0, .12, u) * (1 - smooth(.22, 1, u)) * .9;
+    A[i] = smooth(0, .12, u) * (1 - smooth(.22, 1, u)) * 1.15;
     S[i] = w.sz * (1 + u * .55);       /* a mote softens, it does not swell */
   }
   g.attributes.position.needsUpdate = true;
@@ -4265,6 +4314,7 @@ function progressFor(y) {
 const SCENE_PLATES = [].slice.call(document.querySelectorAll('.scene-plate'));
 const HERO_FOREGROUND = document.querySelector('.hero-foreground');
 const FG_STAGES = [].slice.call(document.querySelectorAll('.fg'));
+const EDITORIAL_IMAGES = [].slice.call(document.querySelectorAll('.still-frame img'));
 const PHOTO_CAM = [
   { x: 0.0, y: 0.0, s:1.065, r: 0.00 },
   { x:-1.8, y: 0.4, s:1.090, r:-0.12 },
@@ -4282,12 +4332,12 @@ function updateScenePlates() {
   const u = clamp(RIG.smooth, 0, PHOTO_CAM.length - 1);
   const i = Math.min(PHOTO_CAM.length - 2, Math.floor(u));
   const t = easeIO(u - i), a = PHOTO_CAM[i], b = PHOTO_CAM[i + 1];
-  const x = lerp(a.x, b.x, t) + RIG.mx * .85 + Math.sin(clock * .12) * .16;
-  const y = lerp(a.y, b.y, t) + RIG.my * .62 + Math.cos(clock * .10) * .11;
-  const scale = lerp(a.s, b.s, t) + RIG.focusAmt * .010 + Math.sin(clock * .085) * .0025;
+  const x = lerp(a.x, b.x, t) + RIG.mx * 2.65 + Math.sin(clock * .12) * .16;
+  const y = lerp(a.y, b.y, t) + RIG.my * 1.72 + Math.cos(clock * .10) * .11;
+  const scale = lerp(a.s, b.s, t) + RIG.focusAmt * .010 + Math.abs(RIG.mx) * .004 + Math.sin(clock * .085) * .0025;
   const roll = lerp(a.r, b.r, t);
   SCENE_PLATES.forEach((plate, n) => { plate.style.opacity = n === 0 ? '1' : '0'; });
-  SCENE_PLATES[0].style.transform = 'translate3d(' + x.toFixed(3) + '%,' + y.toFixed(3) + '%,0) scale(' + scale.toFixed(4) + ') rotate(' + roll.toFixed(3) + 'deg)';
+  SCENE_PLATES[0].style.transform = 'perspective(1400px) translate3d(' + x.toFixed(3) + '%,' + y.toFixed(3) + '%,0) scale(' + scale.toFixed(4) + ') rotateX(' + (-RIG.my * .68).toFixed(3) + 'deg) rotateY(' + (RIG.mx * .96).toFixed(3) + 'deg) rotateZ(' + roll.toFixed(3) + 'deg)';
   if (HERO_FOREGROUND) {
     const leaving = smooth(.04, .72, RIG.smooth);
     HERO_FOREGROUND.style.opacity = (1 - leaving).toFixed(4);
@@ -4304,11 +4354,20 @@ function updateForegroundParallax() {
       if (!live) { img.style.translate = ''; img.style.scale = ''; return; }
       const depth = (i + 1) / (images.length + 1);
       const dir = i % 2 ? -1 : 1;
-      const x = RIG.mx * dir * (5 + depth * 11) + local * dir * (3 + depth * 7);
-      const y = RIG.my * (3 + depth * 7) + Math.abs(local) * depth * 4;
+      const x = RIG.mx * dir * (12 + depth * 28) + local * dir * (3 + depth * 7);
+      const y = RIG.my * (8 + depth * 18) + Math.abs(local) * depth * 4;
       img.style.translate = x.toFixed(2) + 'px ' + y.toFixed(2) + 'px';
-      img.style.scale = (1.002 + depth * .006 + RIG.focusAmt * .006).toFixed(4);
+      img.style.scale = (1.006 + depth * .012 + RIG.focusAmt * .008).toFixed(4);
     });
+  });
+}
+
+function updateEditorialParallax() {
+  if (COARSE) return;
+  EDITORIAL_IMAGES.forEach((img, i) => {
+    const depth = .55 + (i % 3) * .22;
+    const dir = i % 2 ? -1 : 1;
+    img.style.translate = (RIG.mx * dir * 13 * depth).toFixed(2) + 'px ' + (RIG.my * 9 * depth).toFixed(2) + 'px';
   });
 }
 
@@ -4908,6 +4967,7 @@ function frame(now) {
 
   updateScenePlates();
   updateForegroundParallax();
+  updateEditorialParallax();
   applyCamera();
   updateWorld(dt);
   render();
