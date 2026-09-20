@@ -8,6 +8,11 @@
 - 初始上游提交：`13de68f788962d15464f208e2fdbd00f5b144cc1`
 - 改版范围：替换图片与文字，必要时隐藏旧内容
 
+执行计划：
+
+- [文案计划](docs/COPY_PLAN.md)
+- [视觉素材计划](docs/VISUAL_ASSET_PLAN.md)
+
 同步上游：
 
 ```powershell
