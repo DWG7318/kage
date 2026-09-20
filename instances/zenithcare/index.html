@@ -563,9 +563,18 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
 .detail-media img{ width:100%; height:100%; object-fit:cover; filter:saturate(.88) contrast(1.04) brightness(.88); transform:scale(1.025); }
 .detail-code{ position:absolute; left:26px; bottom:22px; z-index:1; font-size:12px; letter-spacing:.18em; color:#dce8e0; }
 .detail-copy{ min-width:0; overflow:auto; padding:clamp(54px,6vw,86px) clamp(34px,5vw,72px) 42px; scrollbar-color:rgba(102,214,173,.48) transparent; }
+.detail-copy [hidden]{ display:none !important; }
+.detail-kicker{ margin:0 0 18px; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--detail-accent,#66d6ad); }
 .detail-copy h2{ max-width:12ch; font-size:clamp(36px,4.4vw,68px); line-height:1.02; letter-spacing:-.025em; }
 .detail-lead{ max-width:45ch; margin:24px 0 0; font-size:clamp(17px,1.4vw,21px); line-height:1.75; color:#c3cec7; }
-.detail-points{ margin-top:clamp(32px,5vh,52px); border-top:1px solid var(--line); }
+.detail-overview{ max-width:52ch; margin:18px 0 0; font-size:15px; line-height:1.85; color:#9eaaa3; }
+.detail-facts{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:30px; border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft); }
+.detail-fact{ min-width:0; padding:15px 14px 16px 0; border-right:1px solid var(--line-soft); }
+.detail-fact:last-child{ padding-right:0; border-right:0; }
+.detail-fact b{ display:block; margin-bottom:7px; font-size:12px; font-weight:500; letter-spacing:.1em; color:#dce6df; }
+.detail-fact span{ display:block; font-size:14px; line-height:1.55; color:#9eaaa3; }
+.detail-section-label{ margin-top:30px; font-size:12px; letter-spacing:.16em; color:var(--detail-accent,#66d6ad); }
+.detail-points{ margin-top:10px; border-top:1px solid var(--line); }
 .detail-point{ display:grid; grid-template-columns:minmax(110px,.42fr) minmax(0,1fr); gap:24px;
   padding:18px 0; border-bottom:1px solid var(--line-soft); }
 .detail-point b{ font-size:14px; font-weight:500; letter-spacing:.06em; color:#dce6df; }
@@ -583,6 +592,57 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
   transform:scaleX(.67); transform-origin:left; transition:transform .3s var(--ease-out); }
 .detail-back:hover i{ transform:scaleX(1); }
 html.detail-open,html.detail-open body{ overflow:hidden; }
+
+/* ================================================= detail compositions */
+.detail-float{ --detail-accent:#66d6ad; }
+.detail-float::before{ content:''; position:absolute; z-index:2; top:0; left:0; width:42%; height:2px; background:var(--detail-accent); opacity:.9; pointer-events:none; }
+.detail-float[data-layout="assessment"]{ grid-template-columns:minmax(400px,1.12fr) minmax(320px,.88fr); --detail-accent:#8ed6c1; }
+.detail-float[data-layout="assessment"] .detail-media{ order:2; }
+.detail-float[data-layout="assessment"] .detail-copy{ order:1; }
+.detail-float[data-layout="arrival"]{ grid-template-columns:minmax(280px,.72fr) minmax(440px,1.28fr); --detail-accent:#b8d99b; }
+.detail-float[data-layout="arrival"] .detail-media::after{ background:linear-gradient(90deg,rgba(3,8,7,.12),rgba(3,8,7,.64)); }
+.detail-float[data-layout="report"]{ grid-template-columns:minmax(360px,.72fr) minmax(440px,1.28fr); --detail-accent:#d7b978; }
+.detail-float[data-layout="report"] .detail-copy{ padding-top:clamp(64px,7vw,100px); }
+.detail-float[data-layout="report"] .detail-lead{ font-size:clamp(20px,1.7vw,26px); color:#d9e1db; }
+.detail-float[data-layout="followup"]{ grid-template-columns:minmax(300px,.62fr) minmax(460px,1.38fr); --detail-accent:#7ec8b2; }
+.detail-float[data-layout="followup"] .detail-facts{ grid-template-columns:1fr; }
+.detail-float[data-layout="followup"] .detail-fact{ display:grid; grid-template-columns:110px 1fr; gap:16px; padding:12px 0; border-right:0; border-bottom:1px solid var(--line-soft); }
+.detail-float[data-layout="followup"] .detail-fact:last-child{ border-bottom:0; }
+.detail-float[data-layout="followup"] .detail-fact b{ margin:0; }
+.detail-float[data-layout="record"]{ grid-template-columns:minmax(420px,1.2fr) minmax(320px,.8fr); --detail-accent:#91cdb5; }
+.detail-float[data-layout="record"] .detail-media{ order:2; }
+.detail-float[data-layout="record"] .detail-copy{ order:1; }
+.detail-float[data-layout="record"] .detail-facts{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+.detail-float[data-layout="review"]{ grid-template-columns:minmax(440px,1.25fr) minmax(320px,.75fr); --detail-accent:#b9d6a6; }
+.detail-float[data-layout="review"] .detail-facts{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+.detail-float[data-layout="metabolic"]{ --detail-accent:#7bd3a8; }
+.detail-float[data-layout="cardio"]{ grid-template-columns:minmax(390px,1.18fr) minmax(330px,.82fr); --detail-accent:#8bbfd4; }
+.detail-float[data-layout="cardio"] .detail-media{ order:2; }
+.detail-float[data-layout="cardio"] .detail-copy{ order:1; }
+.detail-float[data-layout="immunity"]{ --detail-accent:#bca9d4; }
+.detail-float[data-layout="immunity"] .detail-facts{ grid-template-columns:1fr; }
+.detail-float[data-layout="immunity"] .detail-fact{ display:grid; grid-template-columns:120px 1fr; gap:18px; padding:12px 0; border-right:0; border-bottom:1px solid var(--line-soft); }
+.detail-float[data-layout="immunity"] .detail-fact:last-child{ border-bottom:0; }
+.detail-float[data-layout="immunity"] .detail-fact b{ margin:0; }
+.detail-float[data-layout="brain"]{ grid-template-columns:minmax(360px,.82fr) minmax(420px,1.18fr); --detail-accent:#9ab9dd; }
+.detail-float[data-layout="brain"] .detail-media{ order:2; }
+.detail-float[data-layout="brain"] .detail-copy{ order:1; }
+.detail-float[data-layout="lung"]{ --detail-accent:#83d4d0; }
+.detail-float[data-layout="digestive"]{ grid-template-columns:minmax(400px,1.16fr) minmax(320px,.84fr); --detail-accent:#d3a06e; }
+.detail-float[data-layout="digestive"] .detail-media{ order:2; }
+.detail-float[data-layout="digestive"] .detail-copy{ order:1; }
+.detail-float[data-layout="musculoskeletal"]{ --detail-accent:#c7c18f; }
+.detail-float[data-layout="musculoskeletal"] .detail-facts{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+.detail-float[data-layout="reproductive"]{ grid-template-columns:minmax(330px,.78fr) minmax(420px,1.22fr); --detail-accent:#d6a3b5; }
+.detail-float[data-layout="reproductive"] .detail-facts{ grid-template-columns:1fr; }
+.detail-float[data-layout="reproductive"] .detail-fact{ display:grid; grid-template-columns:120px 1fr; gap:18px; padding:12px 0; border-right:0; border-bottom:1px solid var(--line-soft); }
+.detail-float[data-layout="reproductive"] .detail-fact:last-child{ border-bottom:0; }
+.detail-float[data-layout="reproductive"] .detail-fact b{ margin:0; }
+.detail-float[data-layout="oral"]{ --detail-accent:#8bd0c5; }
+.detail-float[data-layout="oral"] .detail-media{ border-radius:0 0 80px 0; }
+.detail-float[data-layout="eye"]{ grid-template-columns:minmax(420px,1.2fr) minmax(320px,.8fr); --detail-accent:#9caed3; }
+.detail-float[data-layout="eye"] .detail-media{ order:2; }
+.detail-float[data-layout="eye"] .detail-copy{ order:1; }
 
 /* ============================================================= progress rail */
 .rail{ position:fixed; right:calc(var(--pad) - 4px); top:50%; transform:translateY(-50%); z-index:45;
@@ -660,8 +720,15 @@ html.detail-open,html.detail-open body{ overflow:hidden; }
   .detail-layer{ padding:10px; align-items:end; }
   .detail-float{ width:100%; height:min(92svh,820px); grid-template-columns:1fr; grid-template-rows:minmax(180px,31svh) minmax(0,1fr); border-radius:14px; }
   .detail-copy{ padding:30px 24px 28px; }
+  .detail-float[data-layout] .detail-media,.detail-float[data-layout] .detail-copy{ order:initial; }
   .detail-copy h2{ font-size:clamp(34px,10vw,48px); }
   .detail-lead{ margin-top:18px; font-size:17px; }
+  .detail-overview{ margin-top:14px; font-size:14px; line-height:1.75; }
+  .detail-facts{ margin-top:22px; }
+  .detail-fact{ padding:12px 9px 13px 0; }
+  .detail-fact b{ font-size:11px; }
+  .detail-fact span{ font-size:12px; line-height:1.45; }
+  .detail-section-label{ margin-top:24px; }
   .detail-points{ margin-top:26px; }
   .detail-point{ grid-template-columns:1fr; gap:6px; padding:15px 0; }
   .detail-code{ left:20px; bottom:16px; }
@@ -775,7 +842,7 @@ body[data-layout-closing="b"] .fin h2{
 body[data-layout-closing="b"] .fin p{ grid-column:1; grid-row:2; margin:0; }
 body[data-layout-closing="b"] .fin .cta{
   grid-column:1; grid-row:3; justify-self:start; margin-top:4px;
-  transform:translateY(-116px);
+  transform:none;
 }
 
 /* — footer B · manifesto: the statement leads, the navigation becomes a
@@ -1041,6 +1108,23 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
   body[data-layout-hero="b"] .chip .num{ font-size:clamp(22px,7.4vw,30px); }
   body[data-layout-hero="b"] .chip .tx{ padding-top:0; }
   body[data-layout-hero="b"] .chip p{ max-width:none; }
+}
+
+/* Chinese needs a little more horizontal breathing room than the original
+   vertical wordmark. These overrides come after the B compositions so the
+   narrow layout cannot be reintroduced by the desktop art direction. */
+@media (max-width:1080px){
+  body[data-layout-hero="b"] .hero-side{ display:none; }
+  body[data-layout-closing="b"] .fin{
+    display:flex; align-items:center; text-align:center; gap:0;
+  }
+  body[data-layout-closing="b"] .fin .eyebrow{ margin:0 0 22px; }
+  body[data-layout-closing="b"] .fin h2{
+    writing-mode:horizontal-tb; text-orientation:mixed; white-space:normal;
+    max-width:100%; font-size:clamp(34px,8.8vw,68px); line-height:1.08;
+  }
+  body[data-layout-closing="b"] .fin p{ margin:22px auto 0; max-width:34ch; }
+  body[data-layout-closing="b"] .fin .cta{ margin-top:28px; transform:none; }
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -1429,11 +1513,15 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
       <span class="detail-code" id="detail-code"></span>
     </div>
     <div class="detail-copy">
+      <p class="detail-kicker" id="detail-kicker"></p>
       <h2 id="detail-title"></h2>
       <p class="detail-lead" id="detail-lead"></p>
+      <p class="detail-overview" id="detail-overview"></p>
+      <div class="detail-facts" id="detail-facts"></div>
+      <p class="detail-section-label" id="detail-section-label"></p>
       <div class="detail-points" id="detail-points"></div>
       <p class="detail-note" id="detail-note"></p>
-      <button class="detail-back" type="button" data-detail-close data-cursor><i></i><span>回到主页</span></button>
+      <button class="detail-back" type="button" data-detail-close data-cursor><i></i><span>关闭详情</span></button>
     </div>
   </section>
 </div>
@@ -4785,11 +4873,37 @@ const DETAIL_CONTENT = {
   }
 };
 
+/* The home page stays cinematic and quiet; each detail surface carries the
+   fuller service explanation. Layout is data-led so every surface can have
+   its own rhythm without duplicating modal markup. Wording follows the
+   supplied service handbook and reference material. */
+const DETAIL_ENRICHMENT = {
+  'service-consult': { layout:'consult', kicker:'服务 01 / 预约沟通', overview:'从需求沟通到到店安排，先把一家人的时间、资料和最关心的问题理清。', facts:[['开始','先说最关心的事'],['安排','确认成员与时间'],['准备','提前说明携带资料']], sectionLabel:'服务怎么开始' },
+  'service-assessment': { layout:'assessment', kicker:'服务 02 / 到店评估', overview:'以用户为中心，以质量为核心。结合既往情况、生活习惯和当下需要，再决定检查重点。', facts:[['看什么','既往结果与生活方式'],['怎么做','基础测量与问询'],['为什么','让检查更有方向']], sectionLabel:'评估内容' },
+  'service-arrival': { layout:'arrival', kicker:'服务 03 / 到店服务', overview:'全程导医导检，从进门、资料确认到每一项检查，都有人把前后顺序说明白。', facts:[['到店','确认预约与成员'],['过程','说明地点与顺序'],['陪同','问题随时记录']], sectionLabel:'服务如何进行' },
+  'service-report': { layout:'report', kicker:'服务 04 / 报告说明', overview:'信任，源自一份科学的检测报告。重要结果由医生当面说明，讲清变化、重点和下一步。', facts:[['结果','把本次与既往放在一起'],['说明','专业术语讲到听得懂'],['下一步','复查或就医留下顺序']], sectionLabel:'报告说明' },
+  'service-followup': { layout:'followup', kicker:'服务 05 / 后续安排', overview:'健康管理不是一次检查就结束。从复评、就医到日常管理，后面的安排继续有人跟进。', facts:[['复评','结合建议安排时间'],['就医','整理资料与建议'],['日常','记录变化与提醒']], sectionLabel:'后续怎么接上' },
+  'service-record': { layout:'record', kicker:'相伴 01 / 健康记录', overview:'把检查结果、医生说明和家人的重要情况放在一起，下次到来时可以从上一次继续。', facts:[['资料','检查结果集中保存'],['变化','前后结果可以比较'],['家人','共同参与也能接手']], sectionLabel:'记录留下什么' },
+  'service-review': { layout:'review', kicker:'相伴 02 / 复评安排', overview:'健康管理是一个全周期过程。结合医生建议和个人情况，在合适时间回来看变化。', facts:[['时间','按个人情况安排'],['比较','把两次结果放在一起'],['调整','更新后面的计划']], sectionLabel:'复评怎么进行' },
+  'health-metabolic': { layout:'metabolic', kicker:'健康中心 01 / 代谢健康', overview:'围绕血糖、血脂、体重和生活方式，关注单次结果，也关注一段时间里的变化。', facts:[['关注','血糖、血脂与体重'],['结合','家族情况与日常习惯'],['安排','饮食、运动与复查']], sectionLabel:'核心关注内容' },
+  'health-cardio': { layout:'cardio', kicker:'健康中心 02 / 心脑血管', overview:'围绕血压、血脂、心电与影像等信息，结合家族情况，提前看清需要长期留意的重点。', facts:[['关注','血压、血脂与心电'],['结合','既往情况与家族史'],['计划','复查指标与观察安排']], sectionLabel:'核心关注内容' },
+  'health-immunity': { layout:'immunity', kicker:'健康中心 03 / 免疫与肿瘤', overview:'把家族史、既往筛查和当下情况放在一起，选择真正有帮助的检查，减少盲目叠加。', facts:[['背景','家族史与既往记录'],['选择','按需要安排检查'],['接续','异常时继续判断']], sectionLabel:'评估重点' },
+  'health-brain': { layout:'brain', kicker:'健康中心 04 / 脑健康', overview:'从记忆、睡眠、情绪和家人观察开始，结合用药与心脑血管情况，了解变化是否需要继续评估。', facts:[['感受','本人变化与生活影响'],['基础','睡眠、用药与血管情况'],['需要时','由医生判断转诊方向']], sectionLabel:'评估重点' },
+  'health-lung': { layout:'lung', kicker:'健康中心 05 / 肺健康', overview:'围绕呼吸状况、肺功能和影像结果，了解活动耐力与变化，留下清楚的复查安排。', facts:[['症状','咳嗽、气短与耐力'],['检查','肺功能与影像结果'],['跟进','设置合适的复查时间']], sectionLabel:'核心关注内容' },
+  'health-digestive': { layout:'digestive', kicker:'健康中心 06 / 消化健康', overview:'从胃肠、肝胆、饮食与营养情况开始，把不适出现的时间和既往检查放在一起看。', facts:[['日常','不适与饮食关系'],['资料','内镜、影像与化验'],['安排','按轻重缓急继续检查']], sectionLabel:'评估重点' },
+  'health-musculoskeletal': { layout:'musculoskeletal', kicker:'健康中心 07 / 肌骨与运动', overview:'从疼痛、受限动作和日常活动量开始，评估骨关节、肌力、平衡与运动能力。', facts:[['活动','疼痛与动作受限'],['能力','肌力、平衡与骨骼'],['运动','强度与恢复方式']], sectionLabel:'评估重点' },
+  'health-reproductive': { layout:'reproductive', kicker:'健康中心 08 / 生殖健康', overview:'尊重不同年龄和人生阶段的实际需要，保护沟通隐私，再衔接合适的专业服务。', facts:[['阶段','年龄与当下关注'],['沟通','保护个人隐私'],['衔接','必要时转入专科判断']], sectionLabel:'服务重点' },
+  'health-oral': { layout:'oral', kicker:'健康中心 09 / 口腔健康', overview:'健康从“齿”开始。围绕牙齿、牙龈、咬合与清洁情况，关注真正影响进食和生活的问题。', facts:[['检查','牙齿、牙龈与咬合'],['处理','疼痛、松动与咀嚼'],['维护','清洁、复查与护理']], sectionLabel:'核心关注内容' },
+  'health-eye': { layout:'eye', kicker:'健康中心 10 / 眼健康', overview:'围绕视力、眼底和长期用眼变化，结合年龄与基础情况，安排合适的检查与后续观察。', facts:[['变化','视力、干涩与疲劳'],['结合','年龄与基础病'],['检查','视力、眼压与眼底']], sectionLabel:'核心关注内容' }
+};
+
 function wireDetails() {
   const layer = $('#detail-layer'); if (!layer) return;
   const panel = layer.querySelector('.detail-float');
   const image = $('#detail-image'), code = $('#detail-code'), title = $('#detail-title');
-  const lead = $('#detail-lead'), points = $('#detail-points'), note = $('#detail-note');
+  const kicker = $('#detail-kicker'), lead = $('#detail-lead'), overview = $('#detail-overview');
+  const facts = $('#detail-facts'), sectionLabel = $('#detail-section-label');
+  const points = $('#detail-points'), note = $('#detail-note');
   let origin = null;
   const close = () => {
     if (!layer.classList.contains('is-open')) return;
@@ -4800,9 +4914,20 @@ function wireDetails() {
   };
   const open = trigger => {
     const item = DETAIL_CONTENT[trigger.dataset.detail]; if (!item) return;
+    const extra = DETAIL_ENRICHMENT[trigger.dataset.detail] || {};
     origin = trigger; trigger.setAttribute('aria-expanded','true');
     image.src = item.image; image.alt = item.alt || ''; image.style.objectPosition = item.pos || 'center';
+    panel.dataset.layout = extra.layout || 'consult';
+    kicker.textContent = extra.kicker || item.code;
     code.textContent = item.code; title.textContent = item.title; lead.textContent = item.lead;
+    overview.textContent = extra.overview || ''; overview.hidden = !extra.overview;
+    sectionLabel.textContent = extra.sectionLabel || ''; sectionLabel.hidden = !extra.sectionLabel;
+    facts.replaceChildren(...(extra.facts || []).map(([heading,copy]) => {
+      const row = document.createElement('div'); row.className = 'detail-fact';
+      const b = document.createElement('b'), span = document.createElement('span');
+      b.textContent = heading; span.textContent = copy; row.append(b,span); return row;
+    }));
+    facts.hidden = !(extra.facts && extra.facts.length);
     points.replaceChildren(...item.points.map(([heading,copy]) => {
       const row = document.createElement('div'); row.className = 'detail-point';
       const b = document.createElement('b'), span = document.createElement('span');
