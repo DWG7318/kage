@@ -18,29 +18,67 @@
 - 蓝色只作专业信息点缀：`#2B5E95`、`#2A70B6`
 - 暖色只作少量提示：`#8B5B2B`、`#E08300`
 
+## Kage 的影像逻辑
+
+Kage 的画面不是独立配图，而是一套连续镜头：
+
+- WebGL 是主镜头：摄影机随滚动穿过同一个空间
+- 4 张场景图是同一空间的补充机位，不是四组图库照片
+- 同一座建筑、同一轮月亮、同一场雨、同一组灯光反复出现
+- 镜头从正面全景进入，再转向侧面、近景、低机位，最后拉远收束
+- 10 张透明前景是近景遮挡层，按章节从左右和底部进入，制造景深与转场
+- 墙体、植物、石材等素材会重复、翻转和跨章节出现，用重复建立空间记忆
+
+## 臻晨的连续镜头
+
+整组素材只讲一次完整服务过程：
+
+> 到达臻晨 → 一起看报告 → 当面讲清楚 → 把下一步接上 → 服务继续
+
+四张场景图与十张前景图必须共享以下设定：
+
+- 同一处臻晨服务空间
+- 同一个上午，日光始终从画面左侧进入
+- 同一位来访者、同一位专业服务人员
+- 人物服装、发型、年龄与随身物品保持一致
+- 固定出现浅木、米白墙面、曲面玻璃、绿色座椅和白色报告夹
+- 镜头逐步靠近人物，再在收尾处重新拉开
+- 绿色是贯穿线，不能每张图更换一套配色
+
+## 镜头顺序
+
+| 镜头 | 景别与机位 | 内容 | 承接关系 |
+| --- | --- | --- | --- |
+| BG-01 | 28mm 左右的正面全景 | 来访者进入服务空间，服务人员迎接 | 交代同一空间、人物和光线 |
+| BG-02 | 35mm 侧向中远景 | 两人坐下，一起查看报告 | 从“到达”进入“把情况看清” |
+| BG-03 | 50–65mm 竖幅中近景 | 服务人员当面说明，来访者专注倾听 | 进入“把话说明白” |
+| BG-04 | 35–50mm 安静近景 | 两人确认后续安排，报告夹仍在画面中 | 落到“把后续接上” |
+
+BG-01 至 BG-04 需要作为同一组连续拍摄生成。任何一张人物、空间或光线对不上，都不进入最终素材。
+
 ## 场景图
 
 | 编号 | 原位文件 | 严格尺寸 | 新画面 | 构图要求 |
 | --- | --- | ---: | --- | --- |
-| BG-01 | `secret-pathways-assets/generated/kage-sanmon-preview.webp` | 1586 × 992 | 明亮的臻晨接待或咨询空间 | 人物与服务动作偏右，左侧留出干净区域；自然日光，绿色只作识别色 |
-| BG-02 | `secret-pathways-assets/generated/kage-approach.webp` | 1536 × 1024 | 工作人员与来访者共同查看报告 | 横向构图，人物偏右；报告可见但不能出现可读隐私内容 |
-| BG-03 | `secret-pathways-assets/generated/kage-lantern-court.webp` | 1024 × 1536 | 面对面说明报告或服务安排 | 竖向景深，表情自然；上方与下方都保留呼吸空间 |
-| BG-04 | `secret-pathways-assets/generated/kage-moonwater.webp` | 1536 × 1024 | 随访、记录或团队交接 | 明亮诊室、服务台或走廊；画面稳定，不做科技展厅感 |
+| BG-01 | `secret-pathways-assets/generated/kage-sanmon-preview.webp` | 1586 × 992 | 同一服务空间的到达与迎接 | 正面全景；人物偏右，左侧留白；建立空间、人物与光线 |
+| BG-02 | `secret-pathways-assets/generated/kage-approach.webp` | 1536 × 1024 | 同一人物坐下查看报告 | 侧向中远景；保留 BG-01 的绿色座椅、报告夹与左侧日光 |
+| BG-03 | `secret-pathways-assets/generated/kage-lantern-court.webp` | 1024 × 1536 | 同一人物面对面听取说明 | 竖向中近景；人物服装与报告夹连续，上下保留呼吸空间 |
+| BG-04 | `secret-pathways-assets/generated/kage-moonwater.webp` | 1536 × 1024 | 同一人物确认后续安排 | 安静近景；报告夹再次出现，空间材质和左侧日光保持一致 |
 
 ## 透明前景图
 
 | 编号 | 原位文件 | 严格尺寸 | 新素材 | 复用要求 |
 | --- | --- | ---: | --- | --- |
-| FG-01 | `secret-pathways-assets/foreground/png/temple-wall.webp` | 1536 × 884 | 浅色服务空间墙体、玻璃隔断或前台边框 | 左右翻转后仍自然；底部承重，边缘干净 |
-| FG-02 | `secret-pathways-assets/foreground/png/pine-tree.webp` | 1024 × 1438 | 高挑的室内绿植或窗边树影 | 主体纵向，根部落在底边，右侧进入画面 |
-| FG-03 | `secret-pathways-assets/foreground/png/tall-grass.webp` | 1717 × 916 | 横向浅绿植物群 | 可在多章节底部重复使用，不能有明确场所文字 |
-| FG-04 | `secret-pathways-assets/foreground/png/sakura-branch.webp` | 1536 × 1024 | 明亮窗边枝叶 | 适合从左侧伸入，也能用于收尾章节 |
-| FG-05 | `secret-pathways-assets/foreground/png/maple-leaves.webp` | 1536 × 1024 | 日光下的轻薄绿叶 | 从右侧进入，避免厚重暗部 |
-| FG-06 | `secret-pathways-assets/foreground/png/stone-lantern.webp` | 1024 × 1499 | 立式导诊标识或简洁服务终端轮廓 | 不带屏幕文字、品牌或设备型号 |
-| FG-07 | `secret-pathways-assets/foreground/png/garden-bush.webp` | 1717 × 876 | 低矮绿植或柔和空间陈设 | 能用于卡片区与页脚，不遮挡中心文字 |
-| FG-08 | `secret-pathways-assets/foreground/png/basalt-stones.webp` | 1536 × 996 | 浅色圆润石材或低矮空间摆件 | 适合底部压边，不能形成暗黑景观 |
-| FG-09 | `secret-pathways-assets/foreground/png/hill.webp` | 1774 × 887 | 明亮的园区、城市绿地或远景轮廓 | 宽幅低地平线，用于收尾背景下缘 |
-| FG-10 | `secret-pathways-assets/foreground/png/shrine-ruins.webp` | 1536 × 1001 | 臻晨服务空间、廊架或建筑剪影 | 轮廓简洁，从左侧进入，不含招牌文字 |
+| FG-01 | `secret-pathways-assets/foreground/png/temple-wall.webp` | 1536 × 884 | 同一空间的浅色曲面玻璃与木质边框 | 作为空间骨架重复出现；左右翻转后仍自然 |
+| FG-02 | `secret-pathways-assets/foreground/png/pine-tree.webp` | 1024 × 1438 | BG 场景中同品种的高挑室内绿植 | 主体纵向，根部落在底边，右侧进入画面 |
+| FG-03 | `secret-pathways-assets/foreground/png/tall-grass.webp` | 1717 × 916 | 同一空间中的横向低矮植物群 | 跨章节重复，形成连续的下沿前景 |
+| FG-04 | `secret-pathways-assets/foreground/png/sakura-branch.webp` | 1536 × 1024 | 左侧窗边植物的枝叶 | 呼应固定的左侧日光，可用于开场与收尾 |
+| FG-05 | `secret-pathways-assets/foreground/png/maple-leaves.webp` | 1536 × 1024 | 同类植物的右侧轻薄叶片 | 与 FG-04 对景，避免更换季节和品种体系 |
+| FG-06 | `secret-pathways-assets/foreground/png/stone-lantern.webp` | 1024 × 1499 | 空间中固定出现的立式导诊装置 | 作为 Kage“灯笼”的视觉锚点，不带屏幕文字 |
+| FG-07 | `secret-pathways-assets/foreground/png/garden-bush.webp` | 1717 × 876 | BG 场景里的绿色座椅与低矮植物组合 | 在卡片区和页脚复现同一家具与植物 |
+| FG-08 | `secret-pathways-assets/foreground/png/basalt-stones.webp` | 1536 × 996 | 同一空间的圆角矮凳或浅色石材基座 | 作为稳定下沿，材质与前台一致 |
+| FG-09 | `secret-pathways-assets/foreground/png/hill.webp` | 1774 × 887 | 窗外同一园区的绿地远景 | 宽幅低地平线，把室内过程接到收尾远景 |
+| FG-10 | `secret-pathways-assets/foreground/png/shrine-ruins.webp` | 1536 × 1001 | 同一服务空间的廊架或建筑入口轮廓 | 与 BG-01 的入口形态一致，从左侧进入 |
 
 ## 现成素材
 
@@ -66,8 +104,8 @@ Logo 不重新生成，不嵌入场景图。
 
 ## 制作顺序
 
-1. 先完成 BG-01，验证整体明度、肤色和品牌绿色
-2. 同一人物与空间风格完成 BG-02 至 BG-04
+1. 先锁定人物、服装、报告夹、空间、家具和左侧日光
+2. 连续完成 BG-01 至 BG-04，先看四张合在一起是否像同一次拍摄
 3. 按页面实际叠放位置制作 FG-01 至 FG-10
 4. 用原文件名覆盖后检查桌面端与手机端
 5. 尺寸、透明通道和加载结果全部通过后，再进入页面验收
@@ -81,3 +119,5 @@ Logo 不重新生成，不嵌入场景图。
 - 所有图片成功加载，无 404
 - 页面不再出现寺院、京都、夜游和暗夜氛围素材
 - 品牌绿来自 Logo 与 UI，画面保持真实、明亮、克制
+- 四张场景图的人物、服装、空间、光线和关键道具连续一致
+- 十张前景图都能在四张场景图中找到同源的材质、植物或空间形态
