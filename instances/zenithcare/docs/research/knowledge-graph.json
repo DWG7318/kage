@@ -1,0 +1,458 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "Kage",
+    "languages": [
+      "css",
+      "html",
+      "markdown",
+      "unknown",
+      "webp"
+    ],
+    "frameworks": [
+      "Three.js"
+    ],
+    "description": "一段交互式的五章节夜间漫游体验，带领访客穿行于京都山寺；使用 Three.js 实时渲染，并叠加电影感生成影像。",
+    "analyzedAt": "2026-08-30T20:24:19.8922141Z",
+    "gitCommitHash": "4399487d2fb42bce39c7b032fbbb50d230bf4f0b"
+  },
+  "nodes": [
+    {
+      "id": "document:PROMPT.md",
+      "type": "document",
+      "name": "PROMPT.md",
+      "filePath": "PROMPT.md",
+      "summary": "Kage 的可移植构建说明，规定五章节京都山寺夜行体验的 WebGL 场景、编辑式版面、滚动镜头、动效语言、响应式与无障碍质量边界。",
+      "tags": [
+        "文档",
+        "构建说明",
+        "体验规格",
+        "设计约束"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Kage 的项目入口文档，介绍五章节 Three.js 夜游体验、单文件静态实现、本地启动方式、目录结构、设计归属与许可状态。",
+      "tags": [
+        "文档",
+        "项目概览",
+        "本地运行",
+        "设计说明",
+        "许可说明"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "index.html",
+      "summary": "Kage 的完整运行入口，在单个 HTML 中组合语义化五章节页面、响应式 CSS、原生交互和 Three.js 程序化山寺场景，并以滚动驱动镜头、前景交接、布料卡片与后处理渲染。",
+      "tags": [
+        "入口点",
+        "three-js",
+        "webgl",
+        "滚动叙事",
+        "单文件应用"
+      ],
+      "complexity": "complex",
+      "languageNotes": "采用单文件 HTML 架构，将语义标记、样式与约 3600 行内联 JavaScript 集成；运行时生成纹理与几何体，并包含 WebGL2 布料模拟、后处理、reduced-motion 和 WebGL 失败回退。"
+    },
+    {
+      "id": "file:.nojekyll",
+      "type": "file",
+      "name": ".nojekyll",
+      "filePath": ".nojekyll",
+      "summary": "用于告知静态托管平台绕过 Jekyll 处理，使项目文件按原样发布。",
+      "tags": [
+        "静态托管",
+        "部署配置",
+        "jekyll-旁路"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.understand-anything/.understandignore",
+      "type": "file",
+      "name": ".understandignore",
+      "filePath": ".understand-anything/.understandignore",
+      "summary": "为 Understand Anything 定义分析排除建议，记录内置默认项以及可选的环境、Claude 和测试文件模式；当前自定义条目均保持为注释。",
+      "tags": [
+        "分析配置",
+        "忽略规则",
+        "项目元数据",
+        "understand-anything"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:assets/kage-preview.webp",
+      "type": "file",
+      "name": "kage-preview.webp",
+      "filePath": "assets/kage-preview.webp",
+      "summary": "1280×720 的 Kage 首页整体预览图，展示赤月、寺院入口、巨型字标和章节导航组成的沉浸式界面。",
+      "tags": [
+        "webp",
+        "界面预览",
+        "品牌展示",
+        "视觉参考"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:secret-pathways-assets/fonts.css",
+      "type": "file",
+      "name": "fonts.css",
+      "filePath": "secret-pathways-assets/fonts.css",
+      "summary": "通过 7 个 @font-face 规则以内嵌 WOFF2 数据提供 Onest、NotoJP 和 Wordmark 字体及其所需字重。",
+      "tags": [
+        "字体配置",
+        "webfont",
+        "woff2",
+        "内嵌资源"
+      ],
+      "complexity": "simple",
+      "languageNotes": "使用 data URI 将字体直接封装进 CSS，可减少独立字体请求，但会显著增大样式文件体积。"
+    },
+    {
+      "id": "file:secret-pathways-assets/foreground/png/basalt-stones.webp",
+      "type": "file",
+      "name": "basalt-stones.webp",
+      "filePath": "secret-pathways-assets/foreground/png/basalt-stones.webp",
+      "summary": "1536×996、带透明通道的湿润玄武岩石组前景素材，用于为寺院夜景叠加岩石与苔藓细节。",
+      "tags": [
+        "webp",
+        "前景素材",
+        "透明图像",
+        "岩石景观"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:secret-pathways-assets/foreground/png/garden-bush.webp",
+      "type": "file",
+      "name": "garden-bush.webp",
+      "filePath": "secret-pathways-assets/foreground/png/garden-bush.webp",
+      "summary": "1717×876、带透明通道的庭园灌木与苔石组合素材，为场景底部和边缘补充深色植被层次。",
+      "tags": [
+        "webp",
+        "前景素材",
+        "透明图像",
+        "庭园植被"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:secret-pathways-assets/foreground/png/hill.webp",
+      "type": "file",
+      "name": "hill.webp",
+      "filePath": "secret-pathways-assets/foreground/png/hill.webp",
+      "summary": "1774×887、带透明通道的低矮山丘素材，以冷暗岩地轮廓建立场景前后景之间的地形过渡。",
+      "tags": [
+        "webp",
+        "前景素材",
+        "透明图像",
+        "地形层次"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:secret-pathways-assets/foreground/png/maple-leaves.webp",
+      "type": "file",
+      "name": "maple-leaves.webp",
+      "filePath": "secret-pathways-assets/foreground/png/maple-leaves.webp",
+      "summary": "1536×1024、带透明通道的散落红枫叶素材，可作为漂浮粒子或边角装饰强化秋夜氛围。",
+      "tags": [
+        "webp",
+        "前景素材",
+        "透明图像",
+        "红枫装饰"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:secret-pathways-assets/foreground/png/pine-tree.webp",
+      "type": "file",
+      "name": "pine-tree.webp",
+      "filePath": "secret-pathways-assets/foreground/png/pine-tree.webp",
+      "summary": "1024×1438、带透明通道的弯曲松树素材，以冷色轮廓和苔石根部构成竖向前景锚点。",
+      "tags": [
+        "webp",
+        "前景素材",
+        "透明图像",
+        "松树景观"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:secret-pathways-assets/foreground/png/sakura-branch.webp",
+      "type": "file",
+      "name": "sakura-branch.webp",
+      "filePath": "secret-pathways-assets/foreground/png/sakura-branch.webp",
+      "summary": "1536×1024、带透明通道的樱花、红叶与飘落花瓣枝条素材，用于形成横向遮挡和季节性装饰。",
+      "tags": [
+        "webp",
+        "前景素材",
+        "透明图像",
+        "樱花枝条"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:secret-pathways-assets/foreground/png/shrine-ruins.webp",
+      "type": "file",
+      "name": "shrine-ruins.webp",
+      "filePath": "secret-pathways-assets/foreground/png/shrine-ruins.webp",
+      "summary": "1536×1001、带透明通道的破损神社石柱、瓦顶残件和碎石素材，为场景加入废墟叙事与年代感。",
+      "tags": [
+        "webp",
+        "前景素材",
+        "透明图像",
+        "神社废墟"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:secret-pathways-assets/foreground/png/stone-lantern.webp",
+      "type": "file",
+      "name": "stone-lantern.webp",
+      "filePath": "secret-pathways-assets/foreground/png/stone-lantern.webp",
+      "summary": "1024×1499、带透明通道的发光石灯笼素材，以暖色光源和苔藓石基形成夜景中的竖向视觉焦点。",
+      "tags": [
+        "webp",
+        "前景素材",
+        "透明图像",
+        "石灯笼"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:secret-pathways-assets/foreground/png/tall-grass.webp",
+      "type": "file",
+      "name": "tall-grass.webp",
+      "filePath": "secret-pathways-assets/foreground/png/tall-grass.webp",
+      "summary": "1717×916、带透明通道的高草丛素材，用于覆盖画面底缘并增强近景密度和自然荒寂感。",
+      "tags": [
+        "webp",
+        "前景素材",
+        "透明图像",
+        "草丛景观"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:secret-pathways-assets/foreground/png/temple-wall.webp",
+      "type": "file",
+      "name": "temple-wall.webp",
+      "filePath": "secret-pathways-assets/foreground/png/temple-wall.webp",
+      "summary": "1536×884、带透明通道的传统寺院围墙与木门素材，可横向分隔场景并建立明确的入口边界。",
+      "tags": [
+        "webp",
+        "前景素材",
+        "透明图像",
+        "寺院围墙"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:secret-pathways-assets/generated/kage-approach.webp",
+      "type": "file",
+      "name": "kage-approach.webp",
+      "filePath": "secret-pathways-assets/generated/kage-approach.webp",
+      "summary": "1536×1024 的寺院接近场景主图，以近景鸟居、湿润石阶、灯笼和巨型赤月塑造庄严的夜间入口。",
+      "tags": [
+        "webp",
+        "场景主图",
+        "寺院入口",
+        "赤月夜景"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:secret-pathways-assets/generated/kage-lantern-court.webp",
+      "type": "file",
+      "name": "kage-lantern-court.webp",
+      "filePath": "secret-pathways-assets/generated/kage-lantern-court.webp",
+      "summary": "1024×1536 的竖幅灯笼庭院主图，突出发光石灯笼、湿润石阶、红叶与远处赤月的纵深关系。",
+      "tags": [
+        "webp",
+        "场景主图",
+        "灯笼庭院",
+        "赤月夜景"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:secret-pathways-assets/generated/kage-moonwater.webp",
+      "type": "file",
+      "name": "kage-moonwater.webp",
+      "filePath": "secret-pathways-assets/generated/kage-moonwater.webp",
+      "summary": "1536×1024 的月水庭园主图，以水面赤月倒影、踏石、桥梁和远处塔阁组织低机位夜景。",
+      "tags": [
+        "webp",
+        "场景主图",
+        "水面倒影",
+        "赤月夜景"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:secret-pathways-assets/generated/kage-sanmon-preview.webp",
+      "type": "file",
+      "name": "kage-sanmon-preview.webp",
+      "filePath": "secret-pathways-assets/generated/kage-sanmon-preview.webp",
+      "summary": "1586×992 的山门预览主图，以对称寺门、成列石灯笼、红叶和背后的巨型赤月构成章节视觉封面。",
+      "tags": [
+        "webp",
+        "场景主图",
+        "山门预览",
+        "赤月夜景"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:PROMPT.md",
+      "target": "file:index.html",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:index.html",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "document:PROMPT.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:core-runtime",
+      "name": "核心运行与项目支持",
+      "description": "承载 Kage 的单文件 Three.js 交互运行时，并包含静态托管旁路和 Understand Anything 分析范围配置。",
+      "nodeIds": [
+        "file:index.html",
+        "file:.nojekyll",
+        "file:.understand-anything/.understandignore"
+      ]
+    },
+    {
+      "id": "layer:visual-assets",
+      "name": "视觉与字体资产",
+      "description": "提供首页预览、赤月山寺章节主图、透明前景构件以及内嵌 WOFF2 字体，为滚动夜游体验建立视觉层次与品牌字形。",
+      "nodeIds": [
+        "file:assets/kage-preview.webp",
+        "file:secret-pathways-assets/fonts.css",
+        "file:secret-pathways-assets/foreground/png/basalt-stones.webp",
+        "file:secret-pathways-assets/foreground/png/garden-bush.webp",
+        "file:secret-pathways-assets/foreground/png/hill.webp",
+        "file:secret-pathways-assets/foreground/png/maple-leaves.webp",
+        "file:secret-pathways-assets/foreground/png/pine-tree.webp",
+        "file:secret-pathways-assets/foreground/png/sakura-branch.webp",
+        "file:secret-pathways-assets/foreground/png/shrine-ruins.webp",
+        "file:secret-pathways-assets/foreground/png/stone-lantern.webp",
+        "file:secret-pathways-assets/foreground/png/tall-grass.webp",
+        "file:secret-pathways-assets/foreground/png/temple-wall.webp",
+        "file:secret-pathways-assets/generated/kage-approach.webp",
+        "file:secret-pathways-assets/generated/kage-lantern-court.webp",
+        "file:secret-pathways-assets/generated/kage-moonwater.webp",
+        "file:secret-pathways-assets/generated/kage-sanmon-preview.webp"
+      ]
+    },
+    {
+      "id": "layer:documentation",
+      "name": "项目说明",
+      "description": "记录 Kage 的体验规格、实现边界、运行方式、目录结构、设计归属与许可状态。",
+      "nodeIds": [
+        "document:PROMPT.md",
+        "document:README.md"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "项目概览",
+      "description": "从 README 开始认识 Kage：它是一段分为五章的 Three.js 京都山寺夜游体验，并采用单文件静态实现。这里同时交代本地启动方式、目录结构、设计归属与许可状态，为后续阅读建立完整路线图。",
+      "nodeIds": [
+        "document:README.md"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "单文件核心运行时",
+      "description": "在项目定位之后，index.html 展示体验如何真正运转：语义化五章节页面、响应式 CSS、原生交互与 Three.js 场景都汇聚在同一个入口。滚动在这里驱动镜头、前景交接、布料卡片和后处理渲染，因此它是理解全局状态与视觉节奏的核心。",
+      "nodeIds": [
+        "file:index.html"
+      ],
+      "languageLesson": "单文件 HTML 可以把结构、样式与脚本封装成零构建入口；这种组织便于静态托管，但需要以清晰分区维持运行时边界。"
+    },
+    {
+      "order": 3,
+      "title": "体验构建蓝图",
+      "description": "理解运行时之后，用 PROMPT.md 回看它遵循的设计契约：五章节 WebGL 场景、编辑式版面、滚动镜头与动效语言都在此被明确约束。响应式与无障碍边界也把视觉概念转化为可检验的实现要求，说明核心入口为何采用前一步看到的组织方式。",
+      "nodeIds": [
+        "document:PROMPT.md"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "字体与首屏基准",
+      "description": "蓝图落到视觉系统时，fonts.css 通过内嵌 WOFF2 数据提供 Onest、NotoJP 与 Wordmark 字体及所需字重，而整体预览图给出首屏的构图基准。两者共同固定巨型字标、章节导航、赤月与寺院入口之间的品牌关系，也为后续章节场景提供一致的视觉标尺。",
+      "nodeIds": [
+        "file:secret-pathways-assets/fonts.css",
+        "file:assets/kage-preview.webp"
+      ],
+      "languageLesson": "CSS 的 @font-face 将字体家族、字重与资源绑定；内嵌 WOFF2 可减少外部依赖，但会增加样式文件体积。"
+    },
+    {
+      "order": 5,
+      "title": "四幕章节场景",
+      "description": "在字体与首屏基准之下，四张主图建立夜游的章节空间：山门封面与寺院接近段负责进入，灯笼庭院与月水庭园继续推进纵深和节奏。巨型赤月、湿润石阶、灯笼、水面倒影与塔阁反复出现，使不同画幅仍保持同一条视觉叙事线。",
+      "nodeIds": [
+        "file:secret-pathways-assets/generated/kage-sanmon-preview.webp",
+        "file:secret-pathways-assets/generated/kage-approach.webp",
+        "file:secret-pathways-assets/generated/kage-lantern-court.webp",
+        "file:secret-pathways-assets/generated/kage-moonwater.webp"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "建筑地形前景",
+      "description": "主场景确定远景叙事后，这组透明 cutout 用岩石、山丘、神社残件、石灯笼和寺院围墙建立近中景的空间骨架。横向边界与竖向光源既遮挡章节主图，也提供入口、年代感和视线锚点，让滚动转场具备可感知的景深。",
+      "nodeIds": [
+        "file:secret-pathways-assets/foreground/png/basalt-stones.webp",
+        "file:secret-pathways-assets/foreground/png/hill.webp",
+        "file:secret-pathways-assets/foreground/png/shrine-ruins.webp",
+        "file:secret-pathways-assets/foreground/png/stone-lantern.webp",
+        "file:secret-pathways-assets/foreground/png/temple-wall.webp"
+      ],
+      "languageLesson": "带 alpha 通道的 WebP 可以作为独立前景层叠加；通过位移、缩放和透明度变化，同一素材可参与视差与章节交接。"
+    },
+    {
+      "order": 7,
+      "title": "植被季节前景",
+      "description": "最后一组透明 cutout 用灌木、枫叶、松树、樱花枝与高草覆盖边缘和底部，补足自然层次与季节线索。它们承接前一步的建筑地形骨架，以横向遮挡、竖向轮廓和漂浮装饰控制近景密度，完成从运行时到资产合成的整条阅读路径。",
+      "nodeIds": [
+        "file:secret-pathways-assets/foreground/png/garden-bush.webp",
+        "file:secret-pathways-assets/foreground/png/maple-leaves.webp",
+        "file:secret-pathways-assets/foreground/png/pine-tree.webp",
+        "file:secret-pathways-assets/foreground/png/sakura-branch.webp",
+        "file:secret-pathways-assets/foreground/png/tall-grass.webp"
+      ]
+    }
+  ]
+}
