@@ -17,9 +17,9 @@
   --muted:#78837c;
   --line:rgba(223,231,224,.13);
   --line-soft:rgba(223,231,224,.07);
-  --vermilion:#e0231c;
-  --ember:#ff5a3c;
-  --gold:#c9a24a;
+  --vermilion:#20a57c;
+  --ember:#66d6ad;
+  --gold:#9ebcaf;
   --pad:clamp(20px, 3.4vw, 56px);
   --nav-h:84px;
   --ease:cubic-bezier(.22,.61,.36,1);
@@ -50,13 +50,24 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .scene-plate{
   position:absolute; inset:-3%; opacity:0;
   background-image:var(--plate); background-position:center; background-size:cover; background-repeat:no-repeat;
-  transform:translate3d(0,0,0) scale(1.055); will-change:opacity,transform;
+  transform:translate3d(0,0,0) scale(1.065); transform-origin:50% 50%;
+  will-change:opacity,transform;
 }
 .scene-plate:first-child{ opacity:1; }
 .scene-plate:nth-child(3){ background-position:54% 46%; }
 .scene-plate:nth-child(4){ background-position:58% center; }
+.scene-plates::before{
+  content:''; position:absolute; z-index:1; inset:-14%; pointer-events:none;
+  background:radial-gradient(42% 38% at 60% 42%,rgba(124,206,177,.18),rgba(124,206,177,0) 72%);
+  mix-blend-mode:soft-light; opacity:.34;
+  animation:ambient-light 15s var(--ease-io) infinite alternate;
+}
+@keyframes ambient-light{
+  from{ transform:translate3d(-3%,-1%,0) scale(.96); opacity:.24; }
+  to{ transform:translate3d(4%,2%,0) scale(1.05); opacity:.40; }
+}
 .scene-plates::after{
-  content:''; position:absolute; inset:0;
+  content:''; position:absolute; z-index:2; inset:0;
   background:
     linear-gradient(90deg,rgba(4,9,8,.58) 0%,rgba(4,9,8,.18) 38%,rgba(4,9,8,.10) 68%,rgba(4,9,8,.36) 100%),
     linear-gradient(180deg,rgba(4,9,8,.28),transparent 28%,transparent 64%,rgba(4,9,8,.62));
@@ -2055,11 +2066,11 @@ function texWisp() {
   const S = 128, c = cvs(S, S), x = c.getContext('2d');
   const g = x.createRadialGradient(S / 2, S / 2, 0, S / 2, S / 2, S / 2);
   g.addColorStop(0,   'rgba(255,255,255,1)');      /* the point itself */
-  g.addColorStop(.07, 'rgba(236,250,250,.92)');
-  g.addColorStop(.16, 'rgba(190,230,238,.40)');
-  g.addColorStop(.34, 'rgba(132,192,212,.13)');
-  g.addColorStop(.62, 'rgba(88,146,172,.035)');
-  g.addColorStop(1,   'rgba(70,120,142,0)');
+  g.addColorStop(.07, 'rgba(232,250,242,.92)');
+  g.addColorStop(.16, 'rgba(164,226,203,.40)');
+  g.addColorStop(.34, 'rgba(86,181,148,.13)');
+  g.addColorStop(.62, 'rgba(45,133,105,.035)');
+  g.addColorStop(1,   'rgba(31,104,82,0)');
   x.fillStyle = g; x.fillRect(0, 0, S, S);
   return c;
 }
@@ -3094,6 +3105,60 @@ function buildWordmark() {
 const WORD = { glyphs: [], group: null, ink: null, reveal: 0 };
 
 /* --------------------------------------------------------- atmospherics */
+function buildPlateAtmosphere() {
+  /* The photographic edition keeps Kage's real depth cues without bringing
+     the night temple back: haze occupies world space, while small pale-green
+     motes cross the lens as the original camera rig moves through the page. */
+  const hazeTex = tx(texGlow('rgba(220,240,232,.42)', 'rgba(116,176,156,.12)'));
+  WORLD.haze = [];
+  const rnd = mulberry32(66);
+  for (let i = 0; i < (LOW ? 4 : 7); i++) {
+    const s = 13 + rnd() * 17;
+    const h = new THREE.Mesh(new THREE.PlaneGeometry(s, s * .50),
+      new THREE.MeshBasicMaterial({ map:hazeTex, transparent:true, blending:THREE.AdditiveBlending,
+        depthWrite:false, depthTest:false, fog:false, opacity:.035 + rnd() * .050 }));
+    h.position.set((rnd() - .5) * 42, 1.5 + rnd() * 13, -42 + rnd() * 58);
+    h.renderOrder = 4;
+    h.userData = { sp:.045 + rnd() * .08, ph:rnd() * TAU, x0:h.position.x };
+    scene.add(h); WORLD.haze.push(h);
+  }
+
+  const N = LOW ? 140 : 280;
+  const pos = new Float32Array(N * 3), seed = new Float32Array(N);
+  for (let i = 0; i < N; i++) {
+    pos[i * 3] = (rnd() - .5) * 42;
+    pos[i * 3 + 1] = rnd() * 16;
+    pos[i * 3 + 2] = -44 + rnd() * 62;
+    seed[i] = rnd();
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  g.setAttribute('aSeed', new THREE.BufferAttribute(seed, 1));
+  const motes = new THREE.Points(g, new THREE.ShaderMaterial({
+    uniforms:{
+      uT:WORLD.uT,
+      uTex:{ value:tx(texGlow('rgba(238,251,245,.92)', 'rgba(102,196,164,.20)')) },
+      uSize:{ value:vpH() * .42 }
+    },
+    transparent:true, blending:THREE.AdditiveBlending, depthWrite:false, depthTest:false,
+    vertexShader:
+      'attribute float aSeed; uniform float uT; uniform float uSize; varying float vA;\n' +
+      'void main(){ vec3 p=position;\n' +
+      ' p.y = mod(p.y + uT*(0.055+aSeed*0.11),16.0);\n' +
+      ' p.x += sin(uT*0.22+aSeed*25.0)*(0.35+aSeed*0.65);\n' +
+      ' p.z += cos(uT*0.17+aSeed*19.0)*0.45;\n' +
+      ' vec4 mv=modelViewMatrix*vec4(p,1.0);\n' +
+      ' vA=(0.16+aSeed*0.50)*smoothstep(16.0,11.0,p.y)*smoothstep(0.0,1.2,p.y);\n' +
+      ' gl_PointSize=uSize*(0.009+aSeed*0.018)/max(-mv.z,0.7);\n' +
+      ' gl_Position=projectionMatrix*mv; }',
+    fragmentShader:
+      'uniform sampler2D uTex; varying float vA;\n' +
+      'void main(){ vec4 t=texture2D(uTex,gl_PointCoord); gl_FragColor=vec4(t.rgb,t.a*vA*0.62); }'
+  }));
+  motes.frustumCulled = false; motes.renderOrder = 5;
+  scene.add(motes); WORLD.embers = motes;
+}
+
 function buildAtmosphere() {
   /* drifting haze slabs */
   const hazeTex = tx(texGlow('rgba(160,205,210,.55)', 'rgba(110,165,175,.18)'));
@@ -4127,23 +4192,52 @@ function progressFor(y) {
 
 const SCENE_PLATES = [].slice.call(document.querySelectorAll('.scene-plate'));
 const HERO_FOREGROUND = document.querySelector('.hero-foreground');
+const FG_STAGES = [].slice.call(document.querySelectorAll('.fg'));
+const PHOTO_CAM = [
+  { x: 0.0, y: 0.0, s:1.065, r: 0.00 },
+  { x:-1.8, y: 0.4, s:1.090, r:-0.12 },
+  { x: 2.4, y:-1.5, s:1.115, r: 0.10 },
+  { x:-2.6, y: 0.8, s:1.100, r:-0.08 },
+  { x: 1.4, y:-0.5, s:1.080, r: 0.06 },
+  { x: 0.0, y: 0.0, s:1.065, r: 0.00 }
+];
 function updateScenePlates() {
   if (!SCENE_PLATES.length) return;
-  const u = clamp(RIG.smooth - 1, 0, SCENE_PLATES.length - 1);
-  SCENE_PLATES.forEach((plate, i) => {
-    const dist = Math.abs(i - u);
-    const alpha = 1 - smooth(0, 1, dist);
-    const x = RIG.mx * (i % 2 ? -10 : 10) + (u - i) * 22;
-    const y = RIG.my * 7 + (u - i) * 5;
-    const scale = 1.055 + RIG.focusAmt * .018 + Math.min(dist, 1) * .012;
-    plate.style.opacity = alpha.toFixed(4);
-    plate.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) scale(' + scale.toFixed(4) + ')';
-  });
+  /* Kage travels through one continuous sanctuary. The first adaptation
+     cross-faded four photographs, which duplicated the family halfway between
+     chapters. Keep one mother scene and move a damped camera through it; the
+     other stills remain available to the card mosaic. */
+  const u = clamp(RIG.smooth, 0, PHOTO_CAM.length - 1);
+  const i = Math.min(PHOTO_CAM.length - 2, Math.floor(u));
+  const t = easeIO(u - i), a = PHOTO_CAM[i], b = PHOTO_CAM[i + 1];
+  const x = lerp(a.x, b.x, t) + RIG.mx * .85 + Math.sin(clock * .12) * .16;
+  const y = lerp(a.y, b.y, t) + RIG.my * .62 + Math.cos(clock * .10) * .11;
+  const scale = lerp(a.s, b.s, t) + RIG.focusAmt * .010 + Math.sin(clock * .085) * .0025;
+  const roll = lerp(a.r, b.r, t);
+  SCENE_PLATES.forEach((plate, n) => { plate.style.opacity = n === 0 ? '1' : '0'; });
+  SCENE_PLATES[0].style.transform = 'translate3d(' + x.toFixed(3) + '%,' + y.toFixed(3) + '%,0) scale(' + scale.toFixed(4) + ') rotate(' + roll.toFixed(3) + 'deg)';
   if (HERO_FOREGROUND) {
     const leaving = smooth(.04, .72, RIG.smooth);
     HERO_FOREGROUND.style.opacity = (1 - leaving).toFixed(4);
-    HERO_FOREGROUND.style.transform = 'translate3d(0,' + (leaving * 18).toFixed(2) + 'vh,0)';
+    HERO_FOREGROUND.style.transform = 'translate3d(' + (RIG.mx * -14).toFixed(2) + 'px,calc(' + (leaving * 18).toFixed(2) + 'vh + ' + (RIG.my * 7).toFixed(2) + 'px),0) scale(' + (1.015 + leaving * .025).toFixed(4) + ')';
   }
+}
+
+function updateForegroundParallax() {
+  const local = RIG.smooth - Math.round(RIG.smooth);
+  FG_STAGES.forEach(stage => {
+    const live = stage.classList.contains('fg-active') || stage.classList.contains('fg-retiring');
+    const images = stage.querySelectorAll('.fg-el > img');
+    images.forEach((img, i) => {
+      if (!live) { img.style.translate = ''; img.style.scale = ''; return; }
+      const depth = (i + 1) / (images.length + 1);
+      const dir = i % 2 ? -1 : 1;
+      const x = RIG.mx * dir * (5 + depth * 11) + local * dir * (3 + depth * 7);
+      const y = RIG.my * (3 + depth * 7) + Math.abs(local) * depth * 4;
+      img.style.translate = x.toFixed(2) + 'px ' + y.toFixed(2) + 'px';
+      img.style.scale = (1.002 + depth * .006 + RIG.focusAmt * .006).toFixed(4);
+    });
+  });
 }
 
 /* ============================================ 10 · the wordmark layout */
@@ -4741,6 +4835,7 @@ function frame(now) {
   }
 
   updateScenePlates();
+  updateForegroundParallax();
   applyCamera();
   updateWorld(dt);
   render();
@@ -4783,7 +4878,10 @@ const JOBS = [
   }],
   ['Painting the near grass', () => { if (!PLATE_MODE) buildForeground(); }],
   ['Cutting the word', () => buildWordmark()],
-  ['Raising the mist', () => { if (!PLATE_MODE) { buildAtmosphere(); buildLeafFall(); buildWisps(); } }],
+  ['Raising the mist', () => {
+    if (PLATE_MODE) { buildPlateAtmosphere(); buildWisps(); }
+    else { buildAtmosphere(); buildLeafFall(); buildWisps(); }
+  }],
   ['Polishing the water', () => {
     if (!PLATE_MODE) { initPost(); buildCards(); }
     buildCardCloth();
